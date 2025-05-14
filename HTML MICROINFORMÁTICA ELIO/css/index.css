@@ -1,0 +1,19 @@
+img{
+    height: auto;
+    width: 280px;
+}
+
+img:hover{
+    transform: scale(1.4);
+    
+
+}
+a:link {color: blue;}
+a:visited{color: red;}
+a:hover{
+    color:coral;
+    font-size: large;
+    background-color:teal;
+    transform: scale(1.9);
+}
+a:active{color: yellow;}
