@@ -11,7 +11,7 @@ strong{
 p{
     color: blue;
     background-color: yellow;
-    font-size: 20px;
+    font-size: 30px;
     margin: 0px;
 }
 p.fonte{
@@ -19,5 +19,8 @@ p.fonte{
 }
 img{
     float:left;
-    height: 110px;
+    width: 130px;
+    display: block;
+    margin: 20px auto;
+    opacity: 0.95;
 }
