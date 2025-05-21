@@ -1,0 +1,9 @@
+body{background-color: white;}
+section,article,header,footer,aside{
+    border: 3px solid black;
+    margin: 10px;
+}
+section{background-color: lightblue;}
+article{background-color: green;}
+aside{height: 80px; background-color: yellow;}
+header,footer{ height: 70px; background: blue;}
