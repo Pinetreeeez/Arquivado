@@ -4,6 +4,9 @@
 # 15/05/2025
 # Mudei só alguns negócios na file html exercício e css, paragrafos e adicionei uma nova imagem
 
+# 20/05/2025
+# Criei a pasta "Python" para arquivar meus arquivos da aula de python, a pasta ja tem uns arquivos de algumas aulas.
+
 # 21/05/2025
 # Adicionei alguns arquivos extras de microinformática que era: container, estrutura  e estrutura 1.
 
