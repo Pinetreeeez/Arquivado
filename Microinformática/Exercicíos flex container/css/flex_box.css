@@ -1,0 +1,47 @@
+h1 {
+    text-align: center;
+}
+
+.container {
+    max-width: 400px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    width: 400px;
+    height: 150px;
+}
+
+.item {
+    margin: 5px;
+    text-align: center;
+    font-size: 1.5em;
+
+    color: white;
+    border: 1px solid white;
+    background-color: darkblue;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+/* Crescer para preencher o espaço 
+    disponível, proporcionalmente a 
+    outros itens flexíveis.
+	e é flexível até um certo ponto,
+    de acordo com a quantidade
+*/
+.flex-item-1 {
+    flex: 1;
+}
+
+/* Este item tem o dobro da proporção
+  de espaço comparado aos demais.
+  Ou seja, ele ocupará duas partes 
+  de espaço para cada parte ocupada 
+  por um item com `flex: 1`. */
+.flex-item-2 {
+    flex: 2;
+}
