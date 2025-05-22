@@ -1,0 +1,10 @@
+body{background-color: white;
+}
+section,article,header,footer,aside,nav{
+    border: solid red;
+    margin: 10px;
+    padding: 10px;
+}
+header h1{text-align: center; color: blue;}
+footer h1{color: green; text-align: center;}
+h1{text-align: center;}

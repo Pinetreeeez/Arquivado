@@ -1,0 +1,26 @@
+h1{
+    font-family: Lucida Handwriting;
+    text-align: center;
+    color: red;
+    margin: 0;
+    background-color: yellow;
+}
+strong{
+    text-decoration: underline;
+}
+p{
+    color: blue;
+    background-color: yellow;
+    font-size: 30px;
+    margin: 0px;
+}
+p.fonte{
+    text-align: right;
+}
+img{
+    float:left;
+    width: 130px;
+    display: block;
+    margin: 20px auto;
+    opacity: 0.95;
+}
