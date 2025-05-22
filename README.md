@@ -3,3 +3,9 @@
 
 # 15/05/2025
 # Mudei só alguns negócios na file html exercício e css, paragrafos e adicionei uma nova imagem
+
+# 21/05/2025
+# Adicionei alguns arquivos extras de microinformática que era: container, estrutura  e estrutura 1.
+
+# 22/05/2025
+# No microinformática dnv eu coloquei o estrutura 2.
