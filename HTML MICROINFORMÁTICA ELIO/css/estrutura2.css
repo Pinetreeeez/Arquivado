@@ -1,0 +1,21 @@
+body{background-color: white;
+}
+section,article,header,footer,aside,nav{
+    border: 1px solid red;
+    margin: 1%;
+    padding: 1%;
+}
+header h1{color: blue;}
+footer h1{color: green;}
+
+h1{text-align: center;}
+
+article{width: 60%;
+height: 300px;
+float: right;}
+
+nav{ width: 30%;
+    height: 300px;
+    float: left;}
+
+footer{clear: both;}
