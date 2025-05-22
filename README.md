@@ -12,3 +12,4 @@
 
 # 22/05/2025
 # No microinformática dnv eu coloquei o estrutura 2.
+# Novo folder para a seção de microinformática em si, html informatica foi pra lá + nova pasta de flex e container 
