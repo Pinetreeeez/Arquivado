@@ -14,5 +14,5 @@
 # No microinformática dnv eu coloquei o estrutura 2.
 # Novo folder para a seção de microinformática em si, html informatica foi pra lá + nova pasta de flex e container 
 
-#27/05/2025
+# 27/05/2025
 # No folder Python foi adicionado 2 arquivos chamados de "lista.py" e "listaexercicio.py", aprendemos sobre listas hoje.
