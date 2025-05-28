@@ -13,6 +13,7 @@ while True:
         break
 print (lista)    
 '''
+'''
 lista = []
 lista_pares = []
 lista_impares = []
@@ -32,4 +33,14 @@ while True:
 print(lista)
 print(lista_pares)
 print(lista_impares)
+'''
 
+lista = [-1,6,-9,-8,4,0,-3,2,7,1,8,-2]
+listaordernada = [-1,6,-9,-8,4,0,-3,2,7,1,8,-2]
+positivos = [x for x in lista if x >= 0]
+negativos = [y for y in lista if y < 0]
+listaordernada.sort()
+print(f"Lista original: {lista}")
+print(f"Lista ordenada: {listaordernada}")
+print(f"Lista positivos: {positivos}")
+print(f"Lista negativos: {negativos}")
