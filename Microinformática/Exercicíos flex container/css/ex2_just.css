@@ -1,0 +1,46 @@
+h1 {
+	text-align: center;
+	margin: 20px 0 0 0;
+}
+.container {
+	max-width: 420px;
+	margin: 10px auto;
+	border: 1px solid #ccc;
+	display:flex;
+}
+.item {
+		
+	margin: 5px;
+	padding: 0 10px;
+	text-align: center;
+	font-size: 1.5em;
+	
+	color: white;
+	border: 1px solid white;
+	background-color: darkblue;
+}
+
+.flex-start {
+	justify-content: flex-start;
+}
+
+
+.flex-end {
+	justify-content: flex-end;
+}
+.center {
+	justify-content: center;
+}
+
+.space-between {
+	justify-content: space-between;
+}
+
+.space-around {
+	justify-content: space-around;
+}
+
+/* Indica que o conteúdo deve se expandir */
+.flex {
+	flex: 1;
+}

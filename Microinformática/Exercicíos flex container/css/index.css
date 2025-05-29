@@ -1,0 +1,25 @@
+
+
+aside{
+    margin-top: 50px;
+}
+ul{
+    list-style-type:none;
+}
+aside ul{
+    margin: 0px auto;
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+}
+aside ul i{
+    padding: 3px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 7px;
+    transition: 0.5s;
+}
+aside ul i:hover{
+    transform: scale(1.3);
+    transition: 0.5s;
+}
