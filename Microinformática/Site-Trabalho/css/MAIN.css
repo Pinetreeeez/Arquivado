@@ -1,19 +1,45 @@
-
+* {
+	margin: 0;
+	padding: 0;
+}
 
 body {
 	margin: 0;
 	padding: 0;
-	background: #bfa6a2;
+	background: #fff6f3;
 	font-family: Helvetica, sans-serif;
 	font-size: 62.5%;
+	flex-wrap: wrap;
 
 }
 
-nav {
-	background: #e24040 ;
-	font-size: 1.0em;
-	width: auto ;
+header{
+	background-color: #e24040;
+	display: flex;
+	justify-content: space-around;
+	
+}
+
+.logo{
+	left: 0;
+	width: 100px;
 	height: auto;
+}
+
+.cps{
+	width: auto;
+	height: 100px;
+margin-right: 15px;
+}
+
+
+nav {
+	background: #bfa6a2;
+	font-size: 1.0em;
+	width: 100% ;
+	height: 50px;
+	position: fixed;
+	
 }
 
 nav ul {
@@ -32,6 +58,7 @@ nav li {
 	justify-content: center;
 	align-items: center;
 	background-color:transparent;
+	text-align: start;
 }
 
 nav li a {
@@ -52,8 +79,23 @@ img{
 
 }
 
+h1, h2, p, ul, li {
+	margin: 0;
+	padding: 0;
+}
 
+principal{
+	margin-top: 150px;
+}
 
+article h2{
+	text-align: center;
+}
+
+article p{
+	text-align: justify;
+	font-size: 1.4em;
+}
 
 
 
