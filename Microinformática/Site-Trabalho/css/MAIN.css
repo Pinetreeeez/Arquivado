@@ -25,15 +25,22 @@ header{
 .logo{
 	width: 130px;
 	height: 60px;
-	padding-left: 5px;
-	
+	position: relative;
+	right: 1000px;
 }
 
 .cps{
 	width: 90px;
 	height: 65px;
-	padding-right: 1160px;
-	padding-bottom: 5px;
+	position: relative;
+	left: 175px;
+	bottom: 4px;
+	display: block;
+}
+.cps-image{
+	width: 100%;
+	height: 100%;
+
 }
 
 
@@ -42,8 +49,9 @@ nav {
 	font-size: 1.0em;
 	width: 100% ;
 	height: 40px;
-	position: fixed;
-	border-style: solid;
+	position: sticky;
+	top: 0px;
+	border-style: sticky;
 	border-top: transparent;
 	border-right: transparent;
 	border-left: transparent;
@@ -81,13 +89,13 @@ a:hover, a:active{
 	
 }
 
-/* img{
+ /* img{
 	width: 400px;
 	padding: auto;
 	display: flex;
 	align-items: center;
 
-} */
+}  */
 
 article, aside {
 	margin: 20px 0 20px 0;
