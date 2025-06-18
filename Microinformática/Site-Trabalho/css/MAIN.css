@@ -22,19 +22,28 @@ header{
 	
 }
 
+section{
+	background-color: #e5d3d4;
+}
+
 .logo{
 	width: 130px;
 	height: 60px;
 	position: relative;
-	right: 720px;
+	right: 65px;
+}
+
+.logo-image{
+	width: 100%;
+	height: 100%;
 }
 
 .cps{
 	width: 90px;
 	height: 65px;
 	position: relative;
-	left: 175px;
-	bottom: 4px;
+	left: 1200px;
+	bottom: 3px;
 	display: block;
 }
 .cps-image{
@@ -43,6 +52,18 @@ header{
 
 }
 
+.governo{
+	width: 200px;
+	height: auto;
+	position: relative;
+	left: 1085px;
+	bottom: 3px;
+}
+
+.governo-image{
+	width: 100%;
+	height: 100%;
+}
 
 nav {
 	background: #bfa6a2;
@@ -55,8 +76,6 @@ nav {
 	border-top: transparent;
 	border-right: transparent;
 	border-left: transparent;
-	border-bottom-color: grey;
-	
 }
 
 nav ul {
@@ -83,10 +102,9 @@ nav li a {
 	text-decoration: none;
 	color: rgb(36, 44, 52);
 }
-a:hover, a:active{
+nav a:hover, a:active{
 	background-color: rgb(220, 219, 219);
-	border-radius: 40px;
-	
+	border-radius: 5px;	
 }
 
  /* img{
@@ -96,6 +114,10 @@ a:hover, a:active{
 	align-items: center;
 
 }  */
+
+main{
+	border: 15px solid #c7b2bb;
+}
 
 article, aside {
 	margin: 20px 0 20px 0;
