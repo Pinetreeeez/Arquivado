@@ -103,67 +103,67 @@ nav li a {
 	color: rgb(8, 10, 12);
 }
 
-nav a:hover, a:active {
+nav a:hover,
+a:active {
 	background-color: rgb(220, 219, 219);
 	border-radius: 5px;
 }
-
 
 
 main {
 	max-width: 100%;
 }
 
-.teste {
+.container {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
-	justify-content: space-around;
+	justify-content: flex-start;
 	align-items: flex-start;
 	align-content: flex-start;
 	gap: 15px;
-	max-width: 900px;
 	margin: 0 auto;
-	justify-content: space-between;
 	padding: 20px;
 }
 
-.teste p {
-	font-size: 1.4em;
-}
-
 .bloco1 {
-	background-color: dodgerblue;
-	font-size: 1.4em;
-	line-height: 1.6;
-	border: 1px solid black;
 	font-size-adjust: auto;
+	align-self: auto;
+	flex-grow: 2;
+	background-color: #cfb9b0;
 }
 
-.bloco2 {
-	background-color: rgb(81, 214, 121);
-	font-size: 1.4em;
-	line-height: 1.6;
-	border: 1px solid black;
-	font-size-adjust: auto;
-}
-
-article {
-	margin: 0 0 0 0;
-	position: relative;
-}
-
-article h2 {
+.bloco1 p {
 	text-align: center;
-}
-
-article p {
 	font-size: 1.6em;
-	text-align: center;
-	font-size-adjust: auto;
-	line-height: 1.6;
+	line-height: 1.6em;
 }
 
+.bloco1 h2 {
+	text-align: center;
+	font-weight: bolder;
+	font-size: 2em;
+	line-height: 1.6em;
+	text-decoration: underline;
+}
+
+.vestibularanuncio{
+	width: 300px;
+	display: flex;
+	position: relative;
+	right: 5px;
+}
+
+
+aside {
+  width: 330px;
+  padding-left: 15px;
+  margin-left: 25px;
+  float: right;
+  font-style: italic;
+  background-color: rgb(109, 63, 63);
+
+}
 
 footer {
 	background-color: #a7979e;
@@ -184,3 +184,20 @@ footer div {
 	align-items: center;
 
 }  */
+
+/* article {
+	margin: 0 0 0 0;
+	position: relative;
+}
+
+article h2 {
+	text-align: center;
+}
+
+article p {
+	font-size: 1.6em;
+	text-align: center;
+	font-size-adjust: auto;
+	line-height: 1.6;
+} */
+
