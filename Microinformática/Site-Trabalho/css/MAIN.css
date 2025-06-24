@@ -267,3 +267,36 @@ article p {
 .fatectexto b{
 	font-size: 1.2em;
 }
+
+/* PAGINA DO CURSOS APARTIR DAQ */
+
+.imagenscurso{
+	display:flex;
+	flex-direction:column;
+	flex-wrap:nowrap;
+	justify-content:space-between;
+	align-items:flex-start;
+	align-content:flex-start;
+}
+
+.imagemads{
+	align-self: auto;
+	order: 1;
+	height: 500px;
+}
+
+.imagemagro{
+	align-self: flex-start;
+	order: 2;
+	height: 350px;
+}
+
+.imagemgestao{
+	order: 3;
+	height: 370px;
+}
+
+.imagemsistema{
+	order: 4;
+	height: 390px;
+}
