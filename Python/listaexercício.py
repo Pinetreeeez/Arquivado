@@ -1,4 +1,18 @@
+#Isso daqui é anotação só pra eu lembrar esse negocio de matriz
+matriz = []
+for i in range (2): #CRIA UMA LINHA
+    linha= []
+    for j in range(3): # ELE ENCHE A LINHA COM OS VALORES, nesse caso ele vai por os valores em 3 posições, ai quando enche as posições essa linha feita é bota na matriz no append la, repete até as linhas estiverem feitas.
+        valor = int(input(f"Digite um valor para a posição {[(i)]} {[(j)]}:"))
+        linha.append(valor)
+    matriz.append(linha)
+
+print("\nMatriz")
+for linha in matriz:
+    print(linha,"")
 '''
+EX 1
+
 lista = []
 while True:
     x = int(input("Digite um valor:"))
@@ -13,6 +27,8 @@ while True:
 print (sorted(lista))    
 '''
 '''
+EX 2
+
 lista = []
 lista_pares = []
 lista_impares = []
@@ -34,6 +50,8 @@ print(lista_pares)
 print(lista_impares)
 '''
 '''
+EX 3
+
 lista = [-1,6,-9,-8,4,0,-3,2,7,1,8,-2]
 listaordernada = [-1,6,-9,-8,4,0,-3,2,7,1,8,-2]
 positivos = [x for x in lista if x >= 0]
@@ -45,6 +63,8 @@ print(f"Lista positivos: {positivos}")
 print(f"Lista negativos: {negativos}")
 '''
 '''
+EX 4
+
 texto = str(input("Digite um texto:"))
 maiuscula = []
 minuscula = []
@@ -59,18 +79,44 @@ print(f'As letras maiusculas foram {maiuscula}\nA quantidade de letras maiuscula
 
 print(f'As letras minusculas foram {minuscula}\nA quantidade de letras minusculas foram {len(minuscula)}')
 '''
+'''
+EX 5
 
-# Ex de lista de listas começa apartir daq
+pessoas = []
+cliente = []
+maior = 0
+menor = 0
+for c in range (0,3):
+    cliente.append(str(input("Nome:")))
+    cliente.append(int(input("Idade:")))
+    pessoas.append(cliente[:])
+    cliente.clear()
 
+print(pessoas)
+
+for c in pessoas:
+    if c[1] >= 18:
+        print(f"{c[0]} é maior de idade.")
+        maior += 1
+    else:
+        print(f"{c[0]} é menor de idade.")
+        menor += 1
+
+print(f"Na lista tem {maior} maior(es) e {menor} menor(es) de idade.")
+'''
+'''
+EX 6
+
+import random
 matriz = []
-for i in range (2): #CRIA UMA LINHA
-    linha= []
-    for j in range(3): # ELE ENCHE A LINHA COM OS VALORES, nesse caso ele vai por os valores em 3 posições, ai quando enche as posições essa linha feita é bota na matriz no append la, repete até as linhas estiverem feitas.
-        valor = int(input(f"Digite um valor para a posição {[(i)]} {[(j)]}:"))
+for i in range(4):
+    linha = []
+    for j in range(4):
+        valor = random.randint(1,100)
         linha.append(valor)
     matriz.append(linha)
 
 print("\nMatriz")
 for linha in matriz:
-
     print(linha,"")
+'''
