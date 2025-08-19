@@ -63,13 +63,14 @@ print(f'As letras minusculas foram {minuscula}\nA quantidade de letras minuscula
 # Ex de lista de listas começa apartir daq
 
 matriz = []
-for i in range (2):
+for i in range (2): #CRIA UMA LINHA
     linha= []
-    for j in range(3):
+    for j in range(3): # ELE ENCHE A LINHA COM OS VALORES, nesse caso ele vai por os valores em 3 posições, ai quando enche as posições essa linha feita é bota na matriz no append la, repete até as linhas estiverem feitas.
         valor = int(input(f"Digite um valor para a posição {[(i)]} {[(j)]}:"))
         linha.append(valor)
     matriz.append(linha)
 
 print("\nMatriz")
 for linha in matriz:
+
     print(linha,"")
