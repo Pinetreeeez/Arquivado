@@ -120,3 +120,21 @@ print("\nMatriz")
 for linha in matriz:
     print(linha,"")
 '''
+'''
+EX 7
+
+matriz = []
+soma = 0
+for i in range (5):
+    linha = []
+    for j in range (2):
+        valor = int(input(f"Digite um valor para a posição {[i]} {[j]} :"))
+        soma = soma + valor
+        linha.append(valor)
+    matriz.append(linha)
+
+print("\nMatriz")
+for linha in matriz:
+    print(linha,"")
+print(f"Soma = {soma}")
+'''
