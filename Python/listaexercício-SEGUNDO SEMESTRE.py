@@ -138,3 +138,23 @@ for linha in matriz:
     print(linha,"")
 print(f"Soma = {soma}")
 '''
+
+'''
+EX 8
+
+matriz = []
+soma = 0
+for i in range (3):
+    linha = []
+    for j in range (3):
+        valor = int(input(f"Digite um valor para a posição {[i]} {[j]} :"))
+        linha.append(valor)
+        if i==j:
+            soma += valor
+    matriz.append(linha)
+
+print("\nMatriz")
+for linha in matriz:
+    print(linha,"")
+print(f"Soma = {soma}")
+'''
