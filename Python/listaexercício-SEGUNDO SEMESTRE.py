@@ -158,3 +158,47 @@ for linha in matriz:
     print(linha,"")
 print(f"Soma = {soma}")
 '''
+
+'''
+EX 9 FINAL
+
+matriz1 = []
+matriz2 = []
+soma = []
+print("Preenchendo Matriz 1")
+for i in range (2):
+    linha = []
+    for j in range (2):
+        valor = int(input(f"Digite um valor para a posição {[i]} {[j]} :"))
+        linha.append(valor)
+    matriz1.append(linha)
+
+print("\nExibindo Matriz 1")
+
+for linha in matriz1:
+    print(linha,"")
+
+print("Preenchendo Matriz 2")
+
+for i in range (2):
+    linha = []
+    for j in range (2):
+        valor = int(input(f"Digite um valor para a posição {[i]} {[j]} :"))
+        linha.append(valor)
+    matriz2.append(linha)
+
+print("\nExibindo Matriz 2")
+for linha in matriz2:
+    print(linha,"")
+
+for i in range(2):
+    linha = []
+    for j in range (2):
+        valor = matriz1[i][j] + matriz2[i][j]
+        linha.append(valor)
+    soma.append(linha)
+    
+print("\nResultado soma")
+for linha in soma:
+    print(linha,"")
+'''
