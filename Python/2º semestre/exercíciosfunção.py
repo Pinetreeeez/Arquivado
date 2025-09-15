@@ -1,0 +1,2 @@
+from contasex import *
+area()
