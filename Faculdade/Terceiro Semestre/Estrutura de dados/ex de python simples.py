@@ -75,3 +75,31 @@ elif 25 < imc <30:
 elif imc > 30:
     print("Obeso")
 '''
+
+#3
+'''
+nota = int(input("Digite um valor inteiro entre 0 e 10 para ser avaliada: "))
+if nota >= 9 and nota <= 10:
+    print("Nota A")
+elif nota >= 7 and nota < 9:
+    print("Nota B")
+elif nota >= 5 and nota < 7:
+    print("Nota C")
+elif nota >= 3 and nota < 5:
+    print("Nota D")
+elif nota < 3:
+    print("Nota E")
+else:
+    print("Nota inválida")
+'''
+
+#4
+x = int(input("Digite o tamanho do lado X: "))
+y = int(input("Digite o tamanho do lado Y: "))
+z = int(input("Digite o tamanho do lado Z: "))
+sen = x + z
+con = y + z
+hip = x + y
+if sen == con and sen == hip and con == hip: print("Triângulo equilátero")
+elif sen == con or sen == hip or hip == con: print("Triângulo isósceles")
+else: print("Triângulo escaleno")
