@@ -20,11 +20,11 @@ else:
 #3   
 '''
 compra = int(input("Digite o valor da sua compra: "))
-if compra > 100:
-    x = compra * 0.10
-else:
-    x = compra * 0.05
-print(f"Você terá um desconto de: {x}")
+	if compra > 100:
+	    x = compra - (compra * 0.10)
+	else:
+	    x = compra - (compra * 0.05)
+	print(f"A sua compra : {x}")
 '''
 
 #4
@@ -94,12 +94,24 @@ else:
 '''
 
 #4
+'''
 x = int(input("Digite o tamanho do lado X: "))
 y = int(input("Digite o tamanho do lado Y: "))
 z = int(input("Digite o tamanho do lado Z: "))
 sen = x + z
 con = y + z
 hip = x + y
-if sen == con and sen == hip and con == hip: print("Triângulo equilátero")
+if con <= x or sen <= y or hip <= z: print ("Não existe triângulo com essas medidas")
+elif sen == con and sen == hip and con == hip: print("Triângulo equilátero")
 elif sen == con or sen == hip or hip == con: print("Triângulo isósceles")
 else: print("Triângulo escaleno")
+'''
+
+#5
+pontox = int(input("Escreva a coordenada do ponto X: "))
+pontoy = int(input("Escreva a coordenada do ponto Y: "))
+if pontox > 0 and pontoy > 0: print("Quadrante 1")
+elif pontox < 0 and pontoy > 0: print("Quadrante 2")
+elif pontox < 0 and pontoy < 0: print("Quadrante 3")
+elif pontox > 0 and pontoy < 0: print("Quadrante 4")
+else: print("Eixo")
