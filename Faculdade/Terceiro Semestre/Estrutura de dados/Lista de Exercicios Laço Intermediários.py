@@ -116,14 +116,33 @@ for aluno, nota in alunos.items():
 '''
 
 #EX 11
-maior = None
-menor = None
-maior = menor = numero = 0
-for i in range (5):
-    numero = int(input("Digite um numero: "))
-    if i > maior:
-        maior = i
-    if i < menor:
-        menor = i
+
+maior = 0
+menor = 0
+for i in range (6):
+    numero = int(input(f"Digite o {i}° numero: "))
+    if i == 0:
+        maior = numero
+        menor = numero
+    if numero >= maior:
+        maior = numero
+    if numero <= menor:
+        menor = numero
 print(f"{maior}")
 print(f"{menor}")
+
+
+#EX 12
+'''
+tentativas  = 1
+while True:
+    numero = int(input("Tente adivinhar o número!: "))
+    if numero > 7:
+        print("Muito alto")
+    elif numero < 7:
+        print("Muito baixo")
+    else:
+        print(f"Parabens! Você acertou!", '\n',f"Tentativas: {tentativas}")
+        break
+    tentativas += 1   
+ '''
