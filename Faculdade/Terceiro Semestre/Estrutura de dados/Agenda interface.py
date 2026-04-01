@@ -6,10 +6,8 @@ def inserir(CodigoN, NomeN, TelefoneN):
     }]
     return contato
     
-def mostar():
-    print ("Aqui estão todos os contatos!")
-    return inserir
-
+'def interface():'
+    
 deu_print = False
 while True:  
     if not deu_print:
@@ -30,10 +28,13 @@ while True:
         codigo = input("Digite o seu código: ")
         nome = input("Digite o nome: ")
         telefone = input("Digite o telefone: ")
-        print(inserir(codigo,nome,telefone))
+        tudo = inserir
+        print(tudo(codigo,nome,telefone))
+        
     elif escolha == 2:
-        mostrar_resultado = mostar()        #ERRADDO
-        print(mostrar_resultado)
+        tudo = [(codigo, nome, telefone)]
+        for x in tudo:
+            
     elif escolha == 3:
         print("Ola")
     elif escolha == 4:
