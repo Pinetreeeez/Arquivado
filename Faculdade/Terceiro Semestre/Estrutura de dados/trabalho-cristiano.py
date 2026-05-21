@@ -6,27 +6,27 @@ class ListaTarefas:
          self.tarefa = tarefa
     
     def adicionar_tarefa(tarefa):   
-        lista_vazia.append(tarefa)                          # Método simples que adiciona o input do usuário na lista. definição simples pra adicionar strs na lista
+        lista_vazia.append(tarefa)                          # Método simples que adiciona o input do usuário na lista. definição simples para adicionar strs na lista.
         print("Tarefa adicionada com sucesso", end ="\n\n")
 
-    def remover_tarefa(tarefa):                                  # Método a onde ele checa se o valor imposto pelo usuário esta na lista, se estiver ele remove o valor.
+    def remover_tarefa(tarefa):                                  # Método a onde ele checa se o valor imposto pelo usuário está na lista, se estiver ele remove o valor.
         lista_vazia.remove(tarefa)
         print("Tarefa removida com sucesso", end ="\n\n")
 
-    def mostrar_tarefas():
-        if not lista_vazia:                                              #Verifica se a lista esta vazia usando
+    def mostrar_tarefas():                                       # Método no qual mostra todas as tarefas adicionadas por meio de uma iteração.
+        if not lista_vazia:                                              # Verifica se a lista está vazia.
             print("Nenhuma tarefa foi adicionada ainda... \n")
         else:
-            for index, tarefa in enumerate(lista_vazia, start= 1):      #Vai iterar a lista com 2 argumentos, um pra colocar o número e o outro pra tarefa. O start= 1 faz com que o index comece no 1
+            for index, tarefa in enumerate(lista_vazia, start= 1):       # Vai iterar a lista com 2 argumentos, um para colocar o número e o outro para tarefa. O start= 1 faz com que o index comece no 1.
                 print(f"{index}. {tarefa} \n")
     
-    def pesquisar_tarefas(tarefa):                                  #Método igual ao de remover tarefa, só que ele vai falar se tá ou não tá na lista.
+    def pesquisar_tarefas(tarefa):                                  # Método igual ao de remover tarefas, só que ele vai falar se tá ou não tá na lista.
         if tarefa in lista_vazia:
             print(f"Tarefa {tarefa} existe na Lista!", end ="\n\n")
         else:
             print("Tarefa não existe na Lista!", end ="\n\n")      
 
-    def quantidade_tarefas():                                       # Outro método simples que usa a função len pra contar a quantidade de tarefas.
+    def quantidade_tarefas():                                       # Outro método simples que usa a função len para contar a quantidade de tarefas.
             lista_total = len(lista_vazia)
             print(f"Há um total de {lista_total} tarefas registradas!" , end ="\n\n")        
                 
@@ -38,17 +38,17 @@ class No:
 
 class Historico:                   
     def __init__(self):
-        self.head = None           # O head é o inicio dos nós, que esta vazio agora. O ponteiro do ultimo nó sempre vai ser None pq ele vai ser o ultimo da lista
+        self.head = None           # O head é o início dos nós, que está vazio agora. O ponteiro do último nó sempre vai ser None pq ele vai ser o último da lista.
     
-    def tarefa_removida(self, valor):             # Função que pega a tarefa insirida pelo usuário antes que ela seja deletada para guardar nos nós
+    def tarefa_removida(self, valor):             # Função que pega a tarefa inserida pelo usuário antes que ela seja deletada para guardar nos nós.
         novo_valor = No(valor)
-        novo_valor.proximo = self.head            # Primeiro ele vai apontar esse node novo para o inicio dos nós
-        if self.head:                       # Vai verificar se é None
-            self.head.anterior = novo_valor       # Ele aponta devolta para o nó que estava apontando para ele
-        self.head = novo_valor                    # Agora o head vai apontar para o novo node, transformando ele como o head (inicio) dos nós e na linha abaixo faz com que o anterior seja vazio
+        novo_valor.proximo = self.head            # Primeiro ele vai apontar esse node novo para o início dos nós.
+        if self.head:                       # Vai verificar se é None.
+            self.head.anterior = novo_valor       # Ele aponta devolta para o nó que estava apontando para ele.
+        self.head = novo_valor                    # Agora o head vai apontar para o novo node, transformando ele como o head (início) dos nós e na linha abaixo faz com que o anterior seja vazio.
         novo_valor.anterior = None
 
-    def mostrar_historico(self):                  # Método simples que conta do head(inicio) do nó até o final do nó. Ele checa também pra ver se tem há um numero deletado ou não.
+    def mostrar_historico(self):                   # Método simples que conta do head(início) do nó até o final da lista encadeada. Ele checa também pra ver se tem um número deletado ou não.
         contador = 0
         atual = self.head 
         if atual == None:
@@ -63,9 +63,9 @@ class Historico:
                 print(f"{contador}. {atual.valor} \n")
                 atual = atual.proximo
 
-    def contar_historico(self):                  # Método que conta todos os nós começando pelo começo verificando se não estão vazios. Ele checa também pra ver se tem há um numero deletado ou não.
+    def contar_historico(self):                  # Método que conta todos os nós começando pelo começo verificando se não estão vazios. Ele checa também para ver se tem um número deletado ou não.
         contador = 0
-        atual = self.head                        # Começa pela head (inicio)
+        atual = self.head                        # Começa pela head (inicio).
         if atual == None:
             print("Não há nenhuma tarefa removida...", end= "\n\n")
         else:
@@ -96,8 +96,8 @@ def main():
             print()
 
             if escolha == 1:
-                x = str(input("Escreva a tarefa que deseja adicionar: ")).lower()        # Pra checar se ja esta na lista
-                if x not in lista_vazia:
+                x = str(input("Escreva a tarefa que deseja adicionar: ")).lower()        
+                if x not in lista_vazia:                                         # Para checar se já está na lista.
                     print()
                     ListaTarefas.adicionar_tarefa(x)
                 else:
@@ -106,12 +106,12 @@ def main():
                         
             elif escolha == 2:
                 x = str(input("Escreva a tarefa que deseja remover: ")).lower()  
-                if x not in lista_vazia:                                        # Pra checar se não esta na lista
+                if x not in lista_vazia:                                        # Para checar se não está na lista.
                     print("Tarefa não encontrada", end ="\n\n")
                 else:
                     print()
-                    lista.tarefa_removida(x)                                # pega o valor que vc decidiu tirar pra adicionar nos nós antes dele realmente for removido
-                    ListaTarefas.remover_tarefa(x)                             # esses prints sem nada dentro é pra ter espaço entre os outputs e input do usuario (pra ficar melhor de ver os resultados)
+                    lista.tarefa_removida(x)                                # Pega o valor que o usuário decidiu tirar para adicionar nos nós antes dele realmente for removido.
+                    ListaTarefas.remover_tarefa(x)                          # Esses prints sem nada dentro é para ter espaço entre os outputs e input do usuário (para ficar melhor de ver os resultados).
                 
             elif escolha == 3:
                 ListaTarefas.mostrar_tarefas()
@@ -139,8 +139,17 @@ def main():
 main()
 
 
-# List foi usado no começo do códiga na classe Lista.
-# Lista encadeada foi usada na classe Historico.
-# A parte mais dificil desse código foi a lista encadeada porque é muito confuso, eu adimito que eu não entendi quase nada sobre isso mesmo tendo os arquivos de estudo que você mandou e vendo tutoriais no youtube + pesquisas do goole. Por causa que é muito complicado e tem como fazer mais rápido ainda sem precisar usar lista encadeada.
-# A estrutura mais facíl de percorrer foi a de list porque ela é muito mais simples de usar, mais prática e menos confusa. Eu tive um pequeno problema em lembrar de como chamar métodos dentro de uma classe mas eu consegui resolver mais rápido do que fazer com lista encadeada.
+# 1. List foi usado na classe Lista.
+
+
+# 2. Lista encadeada foi usada na classe historico.
+
+
+# 3. A parte mais difícil desse código foi a lista encadeada porque é muito confusa, eu admito que eu não entendi quase nada sobre isso mesmo tendo os arquivos de estudo que você mandou e vendo tutoriais no youtube + pesquisas do google. Por causa que é muito complicado e tem como fazer mais rápido ainda sem precisar usar lista encadeada.
+
+
+# 4. A estrutura mais fácil de percorrer foi a de lista porque ela é muito mais simples de usar, mais prática e menos confusa. Eu tive um pequeno problema em lembrar de como chamar métodos dentro de uma classe, mas eu consegui resolver mais rápido do que fazer com lista encadeada.
+
+
 # Errei um monte de coisa fazendo esse código ksksksks mas foi legal fazer.
+
