@@ -40,7 +40,7 @@ class Historico:
     def __init__(self):
         self.head = None           # O head é o inicio dos nós, que esta vazio agora. O ponteiro do ultimo nó sempre vai ser None pq ele vai ser o ultimo da lista
     
-    def tarefa_removida(self, valor):
+    def tarefa_removida(self, valor):             # Função que pega a tarefa insirida pelo usuário antes que ela seja deletada para guardar nos nós
         novo_valor = No(valor)
         novo_valor.proximo = self.head            # Primeiro ele vai apontar esse node novo para o inicio dos nós
         if self.head:                       # Vai verificar se é None
@@ -73,21 +73,7 @@ class Historico:
                 contador += 1
                 atual = atual.proximo
             print(f"A quantidade de tarefas removidas é : {contador} \n")
-
-    def addtarefa_removida(self, alvo):          # Método que procura nos nós o valor que o usuário inseriu para depois adicionar na lista, depois esse valor é deletado porque ele não esta mais "deletado" e esta de volta na lisa
-        atual = self.head
-        if atual == None or atual in lista_vazia:
-            print("Não há nenhuma tarefa removida para adicionar...", end="\n\n")
-        else:
-            while atual:
-                if atual.valor == alvo:
-                    lista_vazia.append(atual.valor)
-                    print("Tarefa readicionada com sucesso!", end="\n\n")
-                    if atual is not None and atual.valor == alvo:                # Ele checa se o valor da variável não é nulo e se é o valor alvo que o usuário pediu
-                        self.head = atual.proximo                                # Vai "deletar" o nó, na verdade ele aponta para outro nó deixando o outro sozinho
-                        atual = None
-            
-            
+        
 
 lista = Historico()
 
@@ -103,7 +89,6 @@ def main():
                 \n Digite [5] para Mostrar a quantidade de tarefas.
                 \n Digite [6] para Mostrar o histórico.
                 \n Digite [7] para Mostrar a quantidade removida de tarefas.
-                \n Digite [8] para Adicionar uma tarefa removida.
                 \n Digite [0] para Sair.
                 \n''')
                 ja_deu_print = True                                
@@ -144,14 +129,6 @@ def main():
             
             elif escolha == 7:
                 lista.contar_historico()
-            
-            elif escolha == 8:
-                x = str(input("Escreva a tarefa removida que deseja adicionar: ")).lower()  
-                if x == None or x in lista_vazia:
-                    print("Não há nenhuma tarefa removida para adicionar...", end="\n\n")
-                else:
-                    print()
-                    lista.addtarefa_removida(x)
 
             elif escolha == 0:
                 print("Tchau tchau! Até mais!", end ="\n\n")
