@@ -9,16 +9,16 @@ public class Main {
 		int tempo = 0;
 		
 		while(true) {
+		calcRetangulo retangulo = new calcRetangulo();
+		
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Digite a largura do retângulo: ");
-		int larg = scan.nextInt();
+		retangulo.setlarguraRetangulo(scan.nextInt());
 		
 		System.out.println("Digite a altura do retângulo: ");
-		int altu = scan.nextInt();
+		retangulo.setalturaRetangulo(scan.nextInt());
 		
-		calcRetangulo retangulo = new calcRetangulo(larg,altu);
-		
-		System.out.println("A área desse retangulo é: " +retangulo.Area());
+		System.out.println("A área desse retangulo é: " + retangulo.areaRetangulo());
 		
 		tempo++;
 		

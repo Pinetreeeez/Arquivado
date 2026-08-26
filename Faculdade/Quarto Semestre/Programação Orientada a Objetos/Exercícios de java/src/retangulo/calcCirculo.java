@@ -2,18 +2,21 @@ package retangulo;
 
 public class calcCirculo {
 	
-	private int raio;
+	private float raio;
+	private double area;
 	
-	calcCirculo(int raio){
-		this.raio = raio;
-	}
-	
-	int getRaio(){
+	float getraioCirculo(){
 		return this.raio;
 	}
 	
-	double areairc() {
-		return Math.PI * (raio * raio);
+	void setraioCirculo(float raio) {
+		this.raio = raio;
+	}
+	
+	double areaCirculo() {
+		area = Math.PI * (getraioCirculo() * getraioCirculo());
+		return area;
 	}
 }
+ 
  

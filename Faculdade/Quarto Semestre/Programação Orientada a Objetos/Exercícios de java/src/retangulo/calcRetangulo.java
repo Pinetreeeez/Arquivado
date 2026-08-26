@@ -2,31 +2,28 @@ package retangulo;
 
 public class calcRetangulo {
 	
-	private int largura;
-	private int altura;
+	private float largura;
+	private float altura;
+	private float area;
 	
-	calcRetangulo(int largura, int altura){
-		this.largura = largura;
-		this.altura = altura;
-	}
-	
-	int getLargura() {
+	float getlarguraRetangulo() {
 		return this.largura;
 	}
 	
-	int getAltura() {
+	float getAlturaretangulo() {
 		return this.altura;
 	}
 	
-	int Area() {
-		return getLargura() * getAltura();
+	float areaRetangulo() {
+		area = getlarguraRetangulo() * getAlturaretangulo();
+		return area;
 	}
 	
-	void setLargura(int largura) {
+	void setlarguraRetangulo(float largura) {
 		this.largura = largura;
 	}
 	
-	void setAltura(int altura) {
+	void setalturaRetangulo(float altura) {
 		this.altura = altura;
 	}
 }

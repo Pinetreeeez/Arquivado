@@ -11,22 +11,24 @@ public class circmain {
 		int tempo = 0;
 		
 		while(true) {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Digite o raio do circulo: ");
-		int raiocirc = scan.nextInt();
-		
-		calcCirculo circulo = new calcCirculo(raiocirc);
-		
-		System.out.println("A área desse circulo é: " + circulo.areairc() + System.lineSeparator());
-		historico.add(circulo.areairc());
-		
-		System.out.println("Adicionado no histórico: "+ historico + System.lineSeparator());
-		
-		tempo++;
-		
-		if (tempo >= 10) {
-			System.out.println("10 áreas calculadas! Fim!" + System.lineSeparator());
-			break;
+			
+			calcCirculo circulo = new calcCirculo();
+			
+			Scanner scan = new Scanner(System.in);
+			System.out.println("Digite o raio do circulo: ");
+			circulo.setraioCirculo(scan.nextFloat());
+			
+			
+			System.out.println("A área desse circulo é: " + circulo.areaCirculo() + System.lineSeparator());
+			historico.add(circulo.areaCirculo());
+			
+			System.out.println("Adicionado no histórico: "+ historico + System.lineSeparator());
+			
+			tempo++;
+			
+			if (tempo >= 10) {
+				System.out.println("10 áreas calculadas! Fim!" + System.lineSeparator());
+				break;
 			}
 		}
 	}
