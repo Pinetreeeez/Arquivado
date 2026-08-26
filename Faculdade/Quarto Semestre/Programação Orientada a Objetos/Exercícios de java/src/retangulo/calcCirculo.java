@@ -18,5 +18,3 @@ public class calcCirculo {
 		return area;
 	}
 }
- 
- 

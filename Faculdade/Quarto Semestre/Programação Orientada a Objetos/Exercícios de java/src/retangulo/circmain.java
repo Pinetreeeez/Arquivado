@@ -3,7 +3,7 @@ package retangulo;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class circmain {
+public class Circmain {
 
 	public static void main(String[] args) {
 		Vector<Double> historico = new Vector<Double>();
