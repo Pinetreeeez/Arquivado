@@ -8,7 +8,7 @@ def Julgamento (nome,nota):
         print("Inválido")
     return
 
-Julgamento("elio", 11)
+Julgamento("Eduardo", 11)
 '''
 
 '''
