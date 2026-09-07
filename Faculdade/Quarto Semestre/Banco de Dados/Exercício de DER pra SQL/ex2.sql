@@ -10,7 +10,7 @@ create table if not exists onibus(
 	placa varchar(100),
 	modelo_onibus varchar(100),
 	ano_fabricacao varchar(100),
-	motorista_onibus int,
+	motorista_onibus int unique,
 	constraint fk_motorista_onibus foreign key (motorista_onibus) references motorista(id)
 );
 
@@ -29,53 +29,63 @@ create table if not exists passageiro(
 	telefone_passageiro varchar(100)
 );
 
+----------------------------------------------------- n por n
+
 create table if not exists realizar_viagem(
-	destino_viagem int references viagem(id),
-	veiculo_onibus int references onibus(id),
-	primary key (veiculo_onibus,destino_viagem)
+	viagem_id int,
+	onibus_id int,
+	constraint fk_viagem_id foreign key (viagem_id) references viagem(id),
+	constraint fk_onibusid foreign key (onibus_id) references onibus(id),
+	primary key (viagem_id, onibus_id)
 );
 
 create table if not exists passageiro_viagem(
-	passageiro_viagem_cpf int references passageiro(id),
-	passageiro_viagem_nome int references viagem(id),
-	primary key (passageiro_viagem_cpf, passageiro_viagem_nome)
+	passageiro_id int,
+	viagem_id int,
+	constraint fk_passageiro_id foreign key (passageiro_id) references passageiro(id),
+	constraint fk_viagem_id2 foreign key (viagem_id) references viagem(id),
+	primary key (passageiro_id,viagem_id)
 );
 
+----------------------------------------------------- inserts e select
+
+
 insert into motorista(cnh, motorista_nome,data_contratacao) values
-('21492350133','Henrique','13/12/2022'), ('16861417118','Leonardo','20/03/2010');
---select * from motorista;
+('2456250133','Marcus','29/12/2022');
+
+select * from motorista;
 
 insert into onibus(placa,modelo_onibus,ano_fabricacao,motorista_onibus) values
 ('HZN4066','Urbano','13/01/2003',1),
 ('MWZ3896','Micro-Onibus','01/06/2023',2),
 ('JLD7543','Rodoviário','14/11/2009',3);
---drop table onibus cascade;
---select * from motorista inner join onibus on motorista.id = onibus.id;
+
+select * from onibus;
 
 insert into viagem (origem,destino,data_viagem,horario_viagem) values 
 ('Pincaba','San Colicio','24/09/2022','15h30'),
 ('Huánugunas','Aspaca','10/03/2025','19h50'),
 ('Carmebaé','Jarpana','03/10/2024','10h20');
 
---select * from viagem;
+select * from viagem;
 
 insert into passageiro(nome_passageiro,cpf_passageiro,telefone_passageiro) values
 ('Maria','15798732002','123456789'),
 ('Leandro', '01181517036', '9934021943'),
 ('Luigi','10418013004', '99178322304');
 
---select * from passageiro;
+select * from passageiro;
 
-insert into realizar_viagem values(1,2),(2,3),(3,1);
+insert into realizar_viagem (viagem_id, onibus_id) values (1,4),(2,6), (3,5);
 
-select v.origem, v.destino, o.placa, o.motorista_onibus 
+select viagem.origem, onibus.modelo_onibus
 from realizar_viagem
-join viagem v on v.id = realizar_viagem.destino_viagem
-join onibus o on o.id = realizar_viagem.veiculo_onibus;
+inner join viagem on Viagem.id = realizar_viagem.viagem_id
+inner join onibus on Onibus.id = realizar_viagem.onibus_id;
 
-insert into passageiro_viagem values(1,3),(2,1),(3,2);
+insert into passageiro_viagem (passageiro_id, viagem_id) values (1,3),(2,2),(3,1);
 
-select p.nome_passageiro, p.cpf_passageiro, v.data_viagem, v.destino
+select passageiro.nome_passageiro,viagem.destino
 from passageiro_viagem
-join passageiro p on p.id = passageiro_viagem.passageiro_viagem_cpf
-join viagem v on v.id = passageiro_viagem.passageiro_viagem_nome;
+inner join passageiro on passageiro.id = passageiro_viagem.passageiro_id
+inner join viagem on viagem.id = passageiro_viagem.viagem_id;
