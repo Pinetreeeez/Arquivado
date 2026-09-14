@@ -5,7 +5,13 @@ public class ContaBancaria {
 	private String titular;
 	private double saldo;
 	
-	String getNumeroConta()){
+	public ContaBancaria(String numeroConta,String titular,double saldo) {
+		this.numeroConta = numeroConta;
+		this.titular = titular;
+		this.saldo = saldo;
+	}
+	
+	String getNumeroConta(){
 		return this.numeroConta;
 	}
 	
@@ -30,16 +36,25 @@ public class ContaBancaria {
 	}
 	
 	public void depositar(double valor) {
+		if (valor <= 0) {
+			System.out.println("Erro! O valor do depósito deve ser maior que zero.");
+			return;
+		}
 		this.saldo += valor;
 		System.out.println("Saldo depositado com sucesso!");
 	}
 	
 	public void sacar(double valor) {
-		if (this.saldo < valor) {
-			System.out.println("Erro");
+		if (valor <= 0) {
+			System.out.println("Erro! O valor do saque deve ser menor ou igual ao saldo guardado");
+			return;
+		}
+		
+		if (getSaldo() < valor) {
+			System.out.println("Erro! Saldo insuficiente para o valor cobrado!");
 		}
 		else {this.saldo -= valor;
-			  System.out.println("Sucesso! Valor sacado");}
+			  System.out.println("Sucesso! Valor sacado!");}
 	}
 	
 	double consultarSaldo() {
