@@ -4,6 +4,7 @@ import java.util.Date;
 import br.com.aplcurso.model.Usuario;
 import br.com.aplcurso.utils.DocumentoValidador;
 import br.com.aplcurso.dao.UsuarioDAO;
+import br.com.aplcurso.utils.EmailValidador;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -26,6 +27,8 @@ public class UsuarioCadastrar extends HttpServlet {
             Date dataNascimento = java.sql.Date.valueOf(request.getParameter("datanascimento"));
             String cpf = request.getParameter("cpf");
             String email = request.getParameter("email");
+            //Pra verificar se o email esta vazio e para nunca ser null. Se não veio valor ele troca null por uma string vazia.
+            email = (email == null) ? "" : email.trim();   
             String senha = request.getParameter("senha");
 
             //tratamento para o campo salario R$1.000,00
@@ -50,7 +53,13 @@ public class UsuarioCadastrar extends HttpServlet {
                        senha.isEmpty()) {
                 //verifica inconsistencias em outros atributos do cadastro
                 response.getWriter().write("5");
-            } else {
+             // Verifica se o email esta no formato de um email correto
+            } else if (!EmailValidador.isEmailValido(email)){
+            	response.getWriter().write("7");
+            } else if (dao.emailExiste(email, id)) {
+            	// Verifica se o email já é cadastrado para outro usuario
+            	response.getWriter().write("6");
+            }  else {
                 //passou nas validacoes - grava dados
                 Usuario oUsuario = new Usuario();
                 oUsuario.setId(id);
@@ -72,43 +81,22 @@ public class UsuarioCadastrar extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+   
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

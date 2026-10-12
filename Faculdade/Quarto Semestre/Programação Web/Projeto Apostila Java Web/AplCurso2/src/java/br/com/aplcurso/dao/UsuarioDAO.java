@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class UsuarioDAO implements GenericDAO{
     
     private Connection conexao;
@@ -185,4 +186,29 @@ public class UsuarioDAO implements GenericDAO{
         }
         return false;
     }
+     
+     //Função pra checar se existe algum outro usuario com esse e-mail
+     public boolean emailExiste(String email, int idIgnorar) {   
+    	 	// O Count(*) conta quantas linhas atendem á condição. Se der 0 o email ta livre e se der 1 ou mais já existe.
+    	 	//Esse lower(email) = lower(?) converte os dois lados para minusculos antes de comparar (tipo Joao@gmail e joao@gmail seriam considerados diferentes). 
+    	 	// O "id <> ?" significa "diferente de" e tem dois propósitos: na inclusão o id é 0 (por causa que no construtor do usuario que o jefferson fez o id é 0) e nenhum usuario tem id 0, então id <> 0 não exclui ninguem e a busca olha todos. 
+    	 	// Na alteração o id é o do usuário que você está editando, sem essa condição, ao editar o usuario e não mudar e-mail, o sistema acharia o e-mail do usuario e diria “já cadastrado”, o que seria um erro.
+    	    // Eu pesquisei e esses "?" são parâmetros que são preenchidos depois na ordem que aparecem (sendo o primeiro o email e o segundo o id).
+    	    String sql = "SELECT COUNT(*) AS qtd FROM usuario " 
+    	    		+ "WHERE lower(email) = lower(?) AND id <> ?"; 
+    	    try (PreparedStatement stmt = conexao.prepareStatement(sql)) {  
+    	    	// Esses setString e setInt vai preencher os "?". Eu botei um trim pra deixar tirar os espaços do começo e do fim do email.
+    	        stmt.setString(1, email.trim()); 
+    	        stmt.setInt(2, idIgnorar);
+    	        try (ResultSet rs = stmt.executeQuery()) {
+    	        	if (rs.next()) {
+    	        		// O rs.getInt le o numero da coluna "qtd", no ">0" se a contagem for 0 o email ta livre e vai retornar false (se for 1 não vai tar disponivel). 
+    	        		return rs.getInt("qtd") > 0;}
+    	        }
+    	    } catch (SQLException e) {
+    	        e.printStackTrace();
+    	    }
+    	    return false;
+    	}
+     
 }
