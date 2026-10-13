@@ -18,6 +18,7 @@ public class UsuarioVerificarEmail extends HttpServlet {
 		try {
 			String email = request.getParameter("email");
 			String idParametro = request.getParameter("id");
+			// Se o id for null ou vazio ele é transformado em 0, o ? age como um if/else
 		int id = (idParametro == null || idParametro.isBlank() ? 0 : Integer.parseInt(idParametro));
 		
 		if (email == null || email.isBlank()) {
@@ -26,6 +27,7 @@ public class UsuarioVerificarEmail extends HttpServlet {
 		}
 		
 		UsuarioDAO dao = new UsuarioDAO();
+		//Se true o valor é 1 (que significa que existe), se for falso é 0 (não existe)
 		response.getWriter().write(dao.emailExiste(email, id) ? "1" : "0");
 		
 		} catch (Exception ex) {
@@ -42,5 +44,9 @@ public class UsuarioVerificarEmail extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
-
+    
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }
 }

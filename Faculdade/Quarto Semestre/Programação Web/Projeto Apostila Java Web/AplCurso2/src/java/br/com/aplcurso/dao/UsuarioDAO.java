@@ -187,11 +187,13 @@ public class UsuarioDAO implements GenericDAO{
         return false;
     }
      
-     //Função pra checar se existe algum outro usuario com esse e-mail
+     //Função pra checar se existe algum outro usuario com esse email
+     // Mesma lógica que o cpfExiste acima só que adaptado pra email
      public boolean emailExiste(String email, int idIgnorar) {   
     	 	// O Count(*) conta quantas linhas atendem á condição. Se der 0 o email ta livre e se der 1 ou mais já existe.
     	 	//Esse lower(email) = lower(?) converte os dois lados para minusculos antes de comparar (tipo Joao@gmail e joao@gmail seriam considerados diferentes). 
-    	 	// O "id <> ?" significa "diferente de" e tem dois propósitos: na inclusão o id é 0 (por causa que no construtor do usuario que o jefferson fez o id é 0) e nenhum usuario tem id 0, então id <> 0 não exclui ninguem e a busca olha todos. 
+    	 	// O "id <> ?" significa "diferente de" e ele tem dois propósitos:
+    	 	// Na inclusão o id é 0 (por causa que no construtor do usuario que o jefferson fez o id é 0) e nenhum usuario tem id 0, então id <> 0 não exclui ninguem e a busca olha todos. 
     	 	// Na alteração o id é o do usuário que você está editando, sem essa condição, ao editar o usuario e não mudar e-mail, o sistema acharia o e-mail do usuario e diria “já cadastrado”, o que seria um erro.
     	    // Eu pesquisei e esses "?" são parâmetros que são preenchidos depois na ordem que aparecem (sendo o primeiro o email e o segundo o id).
     	    String sql = "SELECT COUNT(*) AS qtd FROM usuario " 
