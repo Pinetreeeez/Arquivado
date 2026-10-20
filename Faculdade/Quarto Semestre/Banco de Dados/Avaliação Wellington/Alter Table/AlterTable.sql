@@ -278,4 +278,88 @@ references departamentos (id);
 
 alter table funcionarios drop constraint fk_funcionarios_departamento;
 alter table funcionarios add constraint fk_funcionarios_departamento foreign key (departamento_id)
-references departamentos (id) on delete;
+references departamentos (id) on delete restrict;
+
+alter table departamentos add column data_admissao date default current_date;
+
+-- ex 53
+
+CREATE TABLE clientes (
+    codigo INTEGER,
+    nome VARCHAR(50),
+    email VARCHAR(50)
+);
+
+CREATE TABLE pedidos (
+    codigo INTEGER,
+    cliente INTEGER,
+    data_pedido DATE,
+    valor VARCHAR(20),
+    status VARCHAR(20)
+);
+
+alter table clientes rename column codigo to id;
+alter table pedidos rename column codigo to id;
+
+alter table clientes add constraint pk_clientes_id primary key (id);
+alter table pedidos add constraint pk_pedidos_id primary key (id);
+
+alter table clientes alter column nome type varchar(150);
+
+alter table clientes alter column nome set not null;
+
+alter table clientes add constraint uk_clientes_email unique(email);
+
+alter table pedidos alter column valor type numeric(10,2) using valor :: numeric;
+
+alter table pedidos add constraint ck_pedidos_valor check (valor >= 0);
+
+alter table pedidos rename column cliente to cliente_id;
+
+alter table pedidos add constraint fk_pedidos_clientes foreign key (cliente_id) references clientes(id) on delete restrict;
+
+alter table pedidos alter column status set default 'PENDENTE';
+alter table pedidos add constraint ck_pedidos_status check (status in
+('PENDENTE', 'PAGO','CANCELADO','ENVIADO'));
+
+alter table pedidos add column cliente_ativo boolean default true;
+
+INSERT INTO clientes (id, nome, email) VALUES
+(1, 'Ana Souza', 'ana.souza@email.com'),
+(2, 'Carlos Silva', 'carlos.silva@email.com'),
+(3, 'Mariana Oliveira', 'mariana.oliveira@email.com'),
+(4, 'João Pedro Santos', 'joao.santos@email.com'),
+(5, 'Beatriz Lima', 'beatriz.lima@email.com');
+
+INSERT INTO pedidos (id, cliente_id, valor, status) VALUES
+(1, 1, 150.50, 'PENDENTE'),
+(2, 1, 320.00, 'PAGO'),
+(3, 2, 89.90, 'PENDENTE'),
+(4, 2, 1200.00, 'ENVIADO'),
+(5, 3, 45.00, 'CANCELADO'),
+(6, 3, 210.30, 'PAGO'),
+(7, 4, 550.00, 'PENDENTE'),
+(8, 4, 99.99, 'PAGO'),
+(9, 5, 780.00, 'ENVIADO'),
+(10, 5, 35.50, 'PENDENTE');
+
+UPDATE pedidos 
+SET status = 'PAGO' 
+WHERE id = 1;
+
+UPDATE pedidos 
+SET valor = 1250.00, status = 'ENVIADO' 
+WHERE id = 4;
+
+UPDATE clientes 
+SET nome = 'Ana Souza da Silva' 
+WHERE id = 1;
+
+DELETE FROM pedidos 
+WHERE id = 5;
+
+DELETE FROM pedidos 
+WHERE id = 10;
+
+DELETE FROM pedidos 
+WHERE id = 3;
