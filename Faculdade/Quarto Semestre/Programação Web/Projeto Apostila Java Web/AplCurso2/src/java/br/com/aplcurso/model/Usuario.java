@@ -11,6 +11,7 @@ public class Usuario {
     private String email;
     private String senha;
     private double salario;
+    private Estado estado;
 
     public Usuario() {
         this.id = 0;
@@ -20,9 +21,10 @@ public class Usuario {
         this.senha = "";
         this.salario =0;
         this.dataNascimento = null;
+        this.estado = new Estado();
     }
 
-    public Usuario(int id, String nome, Date dataNascimento, String cpf, String email, String senha, double salario) {
+    public Usuario(int id, String nome, Date dataNascimento, String cpf, String email, String senha, double salario, Estado estado) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -30,6 +32,7 @@ public class Usuario {
         this.email = email;
         this.senha = senha;
         this.salario = salario;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -59,6 +62,10 @@ public class Usuario {
     public double getSalario() {
         return salario;
     }
+    
+    public Estado getEstado(){
+        return estado;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -87,7 +94,11 @@ public class Usuario {
     public void setSalario(double salario) {
         this.salario = salario;
     }
-
+    
+    public void setEstado (Estado estado){
+        this.estado = estado;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

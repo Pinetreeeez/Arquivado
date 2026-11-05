@@ -12,12 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import br.com.aplcurso.dao.EstadoDAO;
+import br.com.aplcurso.model.Estado;
 
 @WebServlet(name = "UsuarioCadastrar", urlPatterns = {"/UsuarioCadastrar"})
 public class UsuarioCadastrar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         try{
             
             UsuarioDAO dao = new UsuarioDAO();
@@ -30,7 +32,12 @@ public class UsuarioCadastrar extends HttpServlet {
             //Pra verificar se o email esta vazio e para nunca ser null. Se não veio valor ele troca null por uma string vazia.
             email = (email == null) ? "" : email.trim();   
             String senha = request.getParameter("senha");
-
+            
+            //Recebendo o estado
+            int idEstado = Integer.parseInt(request.getParameter("idestado"));
+            EstadoDAO estadoDao = new EstadoDAO();
+            Estado oEstado = (Estado) estadoDao.carregar(idEstado);
+            
             //tratamento para o campo salario R$1.000,00
             String salarioStr = request.getParameter("salario");
             // Remove "R$", espaços e pontos de milhar, e troca a vírgula por ponto
@@ -50,7 +57,7 @@ public class UsuarioCadastrar extends HttpServlet {
                 response.getWriter().write("4");
             } else if (nome.isEmpty() || nome.isBlank() || salario <= 0 || 
                        email.isBlank() || email.isEmpty() || senha.isBlank() ||
-                       senha.isEmpty()) {
+                       senha.isEmpty() || oEstado == null) {
                 //verifica inconsistencias em outros atributos do cadastro
                 response.getWriter().write("5");
              // Verifica se o email esta no formato de um email correto
@@ -69,6 +76,7 @@ public class UsuarioCadastrar extends HttpServlet {
                 oUsuario.setEmail(email);
                 oUsuario.setSenha(senha);
                 oUsuario.setSalario(salario);
+                oUsuario.setEstado(oEstado);
 
                 if (dao.cadastrar(oUsuario)){
                     response.getWriter().write("1");               

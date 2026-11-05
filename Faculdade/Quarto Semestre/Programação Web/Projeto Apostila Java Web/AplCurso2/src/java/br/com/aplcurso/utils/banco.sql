@@ -26,3 +26,9 @@ values ('João José Gomes da Silva', '1990-08-10', '08243060073',
  'joaojosegomes@gmail.com', 'senha123', 5200.00);
 
 insert into estado(nomeEstado, siglaEstado) values ('São Paulo','SP');
+
+alter table usuario add column idestado integer;
+
+alter table usuario add constraint fk_usuario_estado foreign key (idestado) references estado(id);
+
+update usuario set idestado = 1 where idestado is null;

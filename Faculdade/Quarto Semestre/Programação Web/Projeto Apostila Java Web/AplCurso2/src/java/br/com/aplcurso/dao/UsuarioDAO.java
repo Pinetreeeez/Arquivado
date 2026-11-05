@@ -1,4 +1,4 @@
-package br.com.aplcurso.dao;
+    package br.com.aplcurso.dao;
 
 import java.util.List;
 import br.com.aplcurso.model.Usuario;   
@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import br.com.aplcurso.model.Estado;
 
 
 public class UsuarioDAO implements GenericDAO{
@@ -36,8 +37,8 @@ public class UsuarioDAO implements GenericDAO{
     public Boolean inserir(Object objeto) {
         Usuario oUsuario = (Usuario) objeto;
         PreparedStatement stmt = null;
-        String sql = "insert into usuario (nome,datanascimento, cpf, email, senha, salario) "
-                + "values (?,?,?,?,?,?)";  
+        String sql = "insert into usuario (nome,datanascimento, cpf, email, senha, salario, idestado) "
+                + "values (?,?,?,?,?,?,?)";  
         try {
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, oUsuario.getNome());        
@@ -46,6 +47,7 @@ public class UsuarioDAO implements GenericDAO{
             stmt.setString(4, oUsuario.getEmail());
             stmt.setString(5, oUsuario.getSenha());
             stmt.setDouble(6, oUsuario.getSalario());
+            stmt.setInt(7, oUsuario.getEstado().getId());
             stmt.execute();
             conexao.commit();
             return true;
@@ -66,7 +68,7 @@ public class UsuarioDAO implements GenericDAO{
     public Boolean alterar(Object objeto) {
         Usuario oUsuario = (Usuario) objeto;
         PreparedStatement stmt = null;
-        String sql = "update usuario set nome=?, datanascimento=?, cpf=?, email=?, senha=?, salario=? "
+        String sql = "update usuario set nome=?, datanascimento=?, cpf=?, email=?, senha=?, salario=?, idestado=? "
                 + "where id=?";  
         try {
             stmt = conexao.prepareStatement(sql);
@@ -76,7 +78,8 @@ public class UsuarioDAO implements GenericDAO{
             stmt.setString(4, oUsuario.getEmail());
             stmt.setString(5, oUsuario.getSenha());
             stmt.setDouble(6, oUsuario.getSalario());
-            stmt.setInt(7, oUsuario.getId());
+            stmt.setInt(7, oUsuario.getEstado().getId());
+            stmt.setInt(8, oUsuario.getId());
             stmt.execute();
             conexao.commit();
             return true;
@@ -134,8 +137,15 @@ public class UsuarioDAO implements GenericDAO{
                 oUsuario.setEmail(rs.getString("email"));
                 oUsuario.setSalario(rs.getDouble("salario"));
                 oUsuario.setDataNascimento(rs.getDate("datanascimento"));
+                
+                GenericDAO estadoDAO;
+                try{
+                    estadoDAO = new EstadoDAO();
+                    oUsuario.setEstado((Estado) estadoDAO.carregar(rs.getInt("idestado")));
+                } catch (Exception ex){
+                    Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            
             return oUsuario;
             
         } catch (SQLException ex) {
@@ -149,12 +159,12 @@ public class UsuarioDAO implements GenericDAO{
     @Override
     public List<Object> listar() {
         List<Object> resultado = new ArrayList<>();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        String sql = "Select * from usuario order by id";               
-        try {
-            stmt = conexao.prepareStatement(sql);
-            rs=stmt.executeQuery();           
+        String sql = "Select * from usuario order by id";  
+        
+        try (PreparedStatement stmt = conexao.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) 
+        {
+            
             while (rs.next()) {                
                 Usuario oUsuario = new Usuario();
                 oUsuario.setId(rs.getInt("id"));
@@ -163,6 +173,16 @@ public class UsuarioDAO implements GenericDAO{
                 oUsuario.setEmail(rs.getString("email"));
                 oUsuario.setSalario(rs.getDouble("salario"));
                 oUsuario.setDataNascimento(rs.getDate("datanascimento"));
+                
+                
+                GenericDAO estadoDAO;
+                try {
+                    estadoDAO = new EstadoDAO();
+                    oUsuario.setEstado((Estado) estadoDAO.carregar(rs.getInt("idestado")));
+                } catch (Exception ex) {
+                    Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
                 resultado.add(oUsuario);
             }
         }catch (SQLException ex) {

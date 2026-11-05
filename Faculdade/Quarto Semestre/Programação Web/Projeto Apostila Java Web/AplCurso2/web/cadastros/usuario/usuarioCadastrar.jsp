@@ -49,6 +49,18 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Estado</label>
+                        <select name="idestado" id="idestado" class ="form-control">
+                            <option value="">Selecione</option>
+                            <c:forEach var="estado" items="${estados}">
+                                <option value="${estado.id}"
+                                    ${usuario.estado.id == estado.id ? "selected" : ""}>
+                                    ${estado.nomeEstado}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class ="form-group">
                         <label>Email</label>
                         <input class="form-control" type="email" name="email" id="email" 
                                value="${usuario.email}" size="100" maxlength="100" 
@@ -292,7 +304,8 @@
                 datanascimento: $('#datanascimento').val(),
                 salario: $('#salario').val(),
                 email: $('#email').val(),
-                senha: $('#senha').val()
+                senha: $('#senha').val(),
+                idestado: $('#idestado').val()
             },
             success: function (data) {
                 console.log("resposta servlet->");

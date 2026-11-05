@@ -10,12 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import br.com.aplcurso.dao.EstadoDAO;
 
 @WebServlet(name = "UsuarioCarregar", urlPatterns = {"/UsuarioCarregar"})
 public class UsuarioCarregar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         response.setContentType("text/html;charset=iso-8859-1");
         try{
             
@@ -23,8 +24,11 @@ public class UsuarioCarregar extends HttpServlet {
             
             GenericDAO usuarioDao = new UsuarioDAO();
             Usuario oUsuario = (Usuario) usuarioDao.carregar(id);
-            
             request.setAttribute("usuario", oUsuario);
+            
+            GenericDAO estadoDao = new EstadoDAO();
+            request.setAttribute("estados", estadoDao.listar());
+            
             request.getRequestDispatcher("/cadastros/usuario/usuarioCadastrar.jsp").forward(request, response);
         } catch(Exception ex){
             System.out.println("Problema na Servelet carrregar despesa!Erro: " + ex.getMessage());
