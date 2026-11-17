@@ -3,6 +3,7 @@
 <%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <jsp:include page="/header.jsp"/>
 <jsp:include page="/menu.jsp"/>
+<fmt:setLocale value="pt_BR"/>
 
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -44,7 +45,8 @@
                                 <label>Valor do Salário</label>
                                 <input class="form-control" type="text" style="text-align:right;" 
                                            name="salario" id="salario" 
-                                           value="<fmt:formatNumber value='${usuario.salario}' type='currency'/>" />
+                                           value="<fmt:formatNumber value='${usuario.salario}' type='number' minFractionDigits='2' maxFractionDigits='2' groupingUsed='false'/>"
+                                            />
                             </div>
                         </div>
                     </div>

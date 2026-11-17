@@ -41,10 +41,8 @@ public class UsuarioCadastrar extends HttpServlet {
             //tratamento para o campo salario R$1.000,00
             String salarioStr = request.getParameter("salario");
             // Remove "R$", espaços e pontos de milhar, e troca a vírgula por ponto
-            salarioStr = salarioStr.replace("R$", "")     // remove "R$"
-                           .replace(".", "")       // remove ponto de milhar
-                           .replace(",", ".")      // troca vírgula decimal por ponto
-                           .trim();                // remove espaços extras
+            salarioStr = salarioStr.replace("[^0-9,]", "") .replace(",", "."); // tira R$, espaços (inclusive o não separável) e pontos
+            		 
 
             double salario = Double.parseDouble(salarioStr);
             
@@ -86,6 +84,8 @@ public class UsuarioCadastrar extends HttpServlet {
             }
         } catch (Exception ex){
              System.out.println("Problemas no Servlet ao cadastrar Usuario! Erro: " + ex.getMessage());
+             ex.printStackTrace();
+             response.getWriter().write("0");
         }
     }
 
